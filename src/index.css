@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+/* Esto es opcional, solo para asegurar que el fondo no sea blanco puro */
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900;
+  }
+}
