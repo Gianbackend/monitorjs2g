@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { ChevronDown, ChevronRight, Car, Settings2, Package, LayoutDashboard, FileSpreadsheet } from 'lucide-react';
+import { ChevronDown, ChevronRight, Car, Settings2, Package, LayoutDashboard, FileSpreadsheet, BarChart3, Warehouse, Wallet, BarChart2, BarChart3Icon, FileUp } from 'lucide-react';
 
 export const Sidebar = () => {
   const [openMenus, setOpenMenus] = useState<{ [key: string]: boolean }>({ vehiculos: true });
@@ -48,8 +48,12 @@ export const Sidebar = () => {
 
           {openMenus.vehiculos && (
             <div className="mt-1 ml-4 border-l border-slate-800 pl-2 space-y-1">
-              <NavItem label="Dashboard" icon={LayoutDashboard} path="/vehiculos/dashboard" active={isActive('/vehiculos/dashboard')} />
-              <NavItem label="Gestión Solped" icon={FileSpreadsheet} path="/vehiculos/solped" active={isActive('/vehiculos/solped')} />
+              <NavItem label="Dashboard" icon={LayoutDashboard} path="/vehiculos/dashboard" />
+              <NavItem label="Gestión Pedido" icon={FileSpreadsheet} path="/vehiculos/gestion" />
+              <NavItem label="Contabilidad" icon={Wallet} path="/vehiculos/contabilidad" />
+              <NavItem label="Almacén" icon={Warehouse} path="/vehiculos/almacen" />
+              <NavItem label="Reportes" icon={BarChart3} path="/vehiculos/reportes" />
+              <NavItem label="Carga" icon={FileUp} path="/vehiculos/carga" />
             </div>
           )}
         </div>
@@ -69,7 +73,12 @@ export const Sidebar = () => {
 
           {openMenus.repuestos && (
             <div className="mt-1 ml-4 border-l border-slate-800 pl-2 space-y-1">
-              <NavItem label="Dashboard" icon={LayoutDashboard} path="/repuestos/dashboard" active={isActive('/repuestos/dashboard')} />
+              <NavItem label="Dashboard" icon={LayoutDashboard} path="/repuestos/dashboard" />
+              <NavItem label="Gestión Pedido" icon={FileSpreadsheet} path="/repuestos/gestion" />
+              <NavItem label="Contabilidad" icon={Wallet} path="/repuestos/contabilidad" />
+              <NavItem label="Almacén" icon={Warehouse} path="/repuestos/almacen" />
+              <NavItem label="Reportes" icon={BarChart3} path="/repuestos/reportes" />
+              <NavItem label="Carga" icon={FileUp} path="/repuestos/carga" />
             </div>
           )}
         </div>
