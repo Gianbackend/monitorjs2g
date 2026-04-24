@@ -1,5 +1,4 @@
-import React from 'react';
-import { UploadCloud, Boxes, FileText, Settings } from 'lucide-react';
+import { UploadCloud, Settings } from 'lucide-react';
 
 export const CargaRepuestos = () => {
   return (
@@ -35,7 +34,7 @@ export const CargaRepuestos = () => {
               </label>
               <label className="flex items-center gap-3 cursor-pointer">
                 <input type="checkbox" className="rounded border-slate-300 text-blue-600 focus:ring-blue-500" defaultChecked />
-                <span className="text-xs text-slate-600">Validar contra SAP BTP</span>
+                <span className="text-xs text-slate-600">Validar contra SAP</span>
               </label>
             </div>
           </div>

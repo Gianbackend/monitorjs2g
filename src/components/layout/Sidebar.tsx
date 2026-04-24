@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { ChevronDown, ChevronRight, Car, Settings2, Package, LayoutDashboard, FileSpreadsheet, BarChart3, Warehouse, Wallet, BarChart2, BarChart3Icon, FileUp } from 'lucide-react';
+import { ChevronDown, ChevronRight, Car, Settings2, Package, LayoutDashboard, FileSpreadsheet, BarChart3, Warehouse, Wallet, FileUp } from 'lucide-react';
 
 export const Sidebar = () => {
-  const [openMenus, setOpenMenus] = useState<{ [key: string]: boolean }>({ vehiculos: true });
+  const [openMenus, setOpenMenus] = useState<{ [key: string]: boolean }>({ vehiculos: true, 
+  repuestos: true });
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -17,8 +18,10 @@ export const Sidebar = () => {
     <button
       onClick={() => navigate(path)}
       className={`w-full flex items-center gap-3 px-4 py-2 text-sm rounded-lg transition-all ${
-        active ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/20' : 'text-slate-400 hover:bg-slate-800 hover:text-slate-100'
-      }`}
+        active 
+  ? 'bg-white/20 text-white shadow-lg backdrop-blur-sm' 
+  : 'text-blue-100/80 hover:bg-white/10 hover:text-white'
+      }`} 
     >
       <Icon size={18} />
       <span>{label}</span>
@@ -26,18 +29,33 @@ export const Sidebar = () => {
   );
 
   return (
-    <aside className="w-64 bg-[#0B1120] text-white h-screen p-4 flex flex-col border-r border-slate-800">
-      <div className="mb-8 px-2">
-        <h1 className="text-xl font-black tracking-tighter text-blue-500">MONITOR JS</h1>
-        <p className="text-[10px] text-slate-500 uppercase font-bold">Torre de Control</p>
-      </div>
+  <aside className="w-64 bg-[#005696] text-white h-screen p-4 flex flex-col border-r border-[#004a82]">
+    
+    <div className="mb-10 flex flex-col items-center justify-center text-center">
+  {/* Contenedor Circular */}
+  <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-xl mb-4 overflow-hidden border-4 border-white/20">
+    <img 
+      src="https://assets.nexusti.uk/crosland1.jpg" 
+      alt="Crosland Logo" 
+      className="w-full h-full object-contain scale-125" 
+    />
+  </div>
+  
+  {/* Textos */}
+  <div>
+    <h1 className="text-2xl font-black tracking-tighter text-white leading-none">CROSLAND</h1>
+    <p className="text-[11px] text-blue-200/70 uppercase font-bold tracking-[0.2em] mt-1">
+      Torre de Control
+    </p>
+  </div>
+</div>
 
-      <nav className="flex-1 space-y-4">
+      <nav className="flex-1 space-y-5">
         {/* SECCIÓN VEHÍCULOS */}
         <div>
           <button 
             onClick={() => toggleMenu('vehiculos')}
-            className="w-full flex items-center justify-between p-2 text-slate-300 hover:text-white"
+            className="w-full flex items-center justify-between p-2 text-white/90 hover:text-white"
           >
             <div className="flex items-center gap-3 font-bold text-xs uppercase tracking-widest">
               <Car size={16} className="text-blue-400" />
@@ -47,7 +65,7 @@ export const Sidebar = () => {
           </button>
 
           {openMenus.vehiculos && (
-            <div className="mt-1 ml-4 border-l border-slate-800 pl-2 space-y-1">
+            <div className="mt-1 ml-4 border-l border-white/20 pl-2 space-y-1">
               <NavItem label="Dashboard" icon={LayoutDashboard} path="/vehiculos/dashboard" />
               <NavItem label="Gestión Pedido" icon={FileSpreadsheet} path="/vehiculos/gestion" />
               <NavItem label="Contabilidad" icon={Wallet} path="/vehiculos/contabilidad" />
@@ -62,7 +80,7 @@ export const Sidebar = () => {
         <div>
           <button 
             onClick={() => toggleMenu('repuestos')}
-            className="w-full flex items-center justify-between p-2 text-slate-300 hover:text-white"
+            className="w-full flex items-center justify-between p-2 text-white/90 hover:text-white"
           >
             <div className="flex items-center gap-3 font-bold text-xs uppercase tracking-widest">
               <Package size={16} className="text-green-400" />
@@ -72,7 +90,7 @@ export const Sidebar = () => {
           </button>
 
           {openMenus.repuestos && (
-            <div className="mt-1 ml-4 border-l border-slate-800 pl-2 space-y-1">
+            <div className="mt-1 ml-4 border-l border-white/20 pl-2 space-y-1">
               <NavItem label="Dashboard" icon={LayoutDashboard} path="/repuestos/dashboard" />
               <NavItem label="Gestión Pedido" icon={FileSpreadsheet} path="/repuestos/gestion" />
               <NavItem label="Contabilidad" icon={Wallet} path="/repuestos/contabilidad" />
@@ -84,7 +102,7 @@ export const Sidebar = () => {
         </div>
       </nav>
 
-      <div className="pt-4 border-t border-slate-800">
+      <div className="pt-4 border-t border-white/20">
         <NavItem label="Configuración" icon={Settings2} path="/config" active={isActive('/config')} />
       </div>
     </aside>
